@@ -3,7 +3,6 @@ Install
 
 Run `npm install` on extention folder, and run `gulp run` for building the scripts.
 
-=============================
 
 **Visit chrome://extensions (via omnibox or menu -> Tools -> Extensions).**
 
