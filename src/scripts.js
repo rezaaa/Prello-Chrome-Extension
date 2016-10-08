@@ -1,9 +1,6 @@
-//TODO: if closed lists are more than open lists you have to change "toggle all lists" button to open lists on page load 
-
-// Find board name from url "apple-itunes-app" meta tag
+// Find board name
 function getBoardName() {
-  const metaTag   = $('meta[name=apple-itunes-app]').attr('content').split(',');
-  const boardName = metaTag[1].substring(metaTag[1].lastIndexOf('/') + 1);
+  const boardName = $('.board-header-btn-name').text().replace(/\s+/g, '-').toLowerCase();
   return boardName;
 };
 
@@ -50,7 +47,7 @@ function main() {
     $(v).attr({'data-list-order': i, 'data-toggle-state': 'open'});
   });
 
-  // Get lists order from local storage  
+  // Get lists order from local storage
   chrome.storage.local.get('listOrder', function(result) {
     var finalResult = result.listOrder;
     var closedLists = 0;
@@ -60,7 +57,7 @@ function main() {
           savedOrder = item.listOrder;
         }
       });
-      
+
       reorderLists();
     }
   });
@@ -149,7 +146,7 @@ function main() {
       allListToggler.removeClass('open-all-list');
       allListToggler.addClass('close-all-list');
     }
-    
+
     // Set or modify lists toggle state
     saveListsData(currentListOrder);
   });
@@ -186,7 +183,7 @@ function saveListsData(data) {
     $('.list-wrapper').map(function() {
       data.push([$(this).attr('data-toggle-state'), $(this).attr('data-list-order')]);
     });
-  
+
   // Set or modify lists toggle state
   chrome.storage.local.get('listOrder', function(result) {
     let finalResult = result.listOrder;

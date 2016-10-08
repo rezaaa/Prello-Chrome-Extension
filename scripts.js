@@ -1,11 +1,8 @@
 'use strict';
 
-//TODO: if closed lists are more than open lists you have to change "toggle all lists" button to open lists on page load 
-
-// Find board name from url "apple-itunes-app" meta tag
+// Find board name
 function getBoardName() {
-  var metaTag = $('meta[name=apple-itunes-app]').attr('content').split(',');
-  var boardName = metaTag[1].substring(metaTag[1].lastIndexOf('/') + 1);
+  var boardName = $('.board-header-btn-name').text().replace(/\s+/g, '-').toLowerCase();
   return boardName;
 };
 
@@ -51,7 +48,7 @@ function main() {
     $(v).attr({ 'data-list-order': i, 'data-toggle-state': 'open' });
   });
 
-  // Get lists order from local storage  
+  // Get lists order from local storage
   chrome.storage.local.get('listOrder', function (result) {
     var finalResult = result.listOrder;
     var closedLists = 0;
