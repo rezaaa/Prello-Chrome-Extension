@@ -1,4 +1,4 @@
-Install
+How To Install
 =============================
 
 Run `npm install` on extention folder, and run `gulp run` for building the scripts.
