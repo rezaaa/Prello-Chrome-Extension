@@ -1,3 +1,9 @@
+Prello Chrome extension for trello
+=============================
+
+a simple chrome extension for your big boards on trello to toggle lists and reorder them for yourself.
+
+
 How To Install
 =============================
 
